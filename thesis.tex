@@ -20,6 +20,8 @@
 
 
 \documentclass[oneside,a4paper,12pt]{book}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 
 \input{styles/common.tex}
 \input{styles/custom.tex}
@@ -37,9 +39,9 @@
 \input{front/template/besmellah.tex}
 
 % Uncomment the following line for adding signature page
-%\input{front/template/signatures.tex}
+\input{front/template/signatures.tex}
 
-%\input{front/acknowledge.tex}
+\input{front/acknowledge.tex}
 \input{front/abstract.tex}
 
 
@@ -56,13 +58,9 @@
 
 % -------------------- Chapters --------------------
 
-\include{chapters/guide}
-\include{chapters/writing}
-\include{chapters/introduction}
-\include{chapters/definitions}
-\include{chapters/literature}
-\include{chapters/results}
-\include{chapters/conclusions}
+\include{chapters/introduction/introduction}
+%\include{chapters/problems}
+
 
 
 % -------------------- Appendices --------------------
