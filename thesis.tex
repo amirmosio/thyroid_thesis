@@ -1,4 +1,3 @@
-
 %--------------------------------------------------------------------------
 %
 %  M.Sc. Thesis
@@ -29,62 +28,63 @@
 \begin{document}
 
 
-% -------------------- Front Pages --------------------
+    % -------------------- Front Pages --------------------
 
-%\pagenumbering{alph}
+    %\pagenumbering{alph}
 
-\input{front/info.tex}
-\input{front/template/title.tex}
+    \input{front/info.tex}
+    \input{front/template/title.tex}
 
-\input{front/template/besmellah.tex}
+    \input{front/template/besmellah.tex}
 
-% Uncomment the following line for adding signature page
-\input{front/template/signatures.tex}
+    % Uncomment the following line for adding signature page
+    \input{front/template/signatures.tex}
 
-\input{front/acknowledge.tex}
-\input{front/abstract.tex}
-
-
-% -------------------- Table of Contents --------------------
+    \input{front/acknowledge.tex}
+    \input{front/abstract.tex}
 
 
-\pagestyle{fancy}
-
-\tableofcontents \newpage
-\listoffigures \newpage
-\listoftables \newpage
-
-%\pagenumbering{arabic}
-
-% -------------------- Chapters --------------------
-
-\include{chapters/introduction/introduction}
-%\include{chapters/problems}
+    % -------------------- Table of Contents --------------------
 
 
+    \pagestyle{fancy}
 
-% -------------------- Appendices --------------------
+    \tableofcontents \newpage
+    \listoffigures \newpage
+    \listoftables \newpage
 
-\begin{appendix}
-\include{chapters/appendix}
-\end{appendix}
+    %\pagenumbering{arabic}
 
-% -------------------- Bibliography --------------------
+    % -------------------- Chapters --------------------
 
-
-\input{bibs/bibs.tex}
-
-
-% -------------------- English Pages --------------------
-
-
-\newgeometry{left=3cm,right=2.5cm}
-
-\input{front/dictionary}
-\input{front/abstract-eng.tex}
-\input{front/template/title-eng.tex}
+    \include{chapters/introduction/introduction}
+    \include{chapters/datasets/datasets}
+    \include{chapters/conclusion}
 
 
-% -------------------- The End! --------------------
+
+    % -------------------- Appendices --------------------
+
+    \begin{appendix}
+        \include{chapters/appendix}
+    \end{appendix}
+
+    % -------------------- Bibliography --------------------
+
+
+    \input{bibs/bibs.tex}
+
+
+    % -------------------- English Pages --------------------
+
+
+    \newgeometry{left=3cm,right=2.5cm}
+
+    \input{front/dictionary}
+    \input{front/abstract-eng.tex}
+    \input{front/template/title-eng.tex}
+
+
+    % -------------------- The End! --------------------
 
 \end{document}
