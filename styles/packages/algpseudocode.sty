@@ -57,21 +57,21 @@
 \algdef{C}[IF]{IF}{ElsIf}[1]{\algorithmicelse\ \algorithmicif\ #1\ \algorithmicthen}%
 \algdef{Ce}[ELSE]{IF}{Else}{EndIf}{\algorithmicelse}%
 \algdef{SE}[PROCEDURE]{Procedure}{EndProcedure}%
-   [2]{\algorithmicprocedure\ \textproc{#1}\ifthenelse{\equal{#2}{}}{}{(#2)}}%
-   {\algorithmicend\ \algorithmicprocedure}%
+[2]{\algorithmicprocedure\ \textproc{#1}\ifthenelse{\equal{#2}{}}{}{(#2)}}%
+{\algorithmicend\ \algorithmicprocedure}%
 \algdef{SE}[FUNCTION]{Function}{EndFunction}%
-   [2]{\algorithmicfunction\ \textproc{#1}\ifthenelse{\equal{#2}{}}{}{(#2)}}%
-   {\algorithmicend\ \algorithmicfunction}%
+[2]{\algorithmicfunction\ \textproc{#1}\ifthenelse{\equal{#2}{}}{}{(#2)}}%
+{\algorithmicend\ \algorithmicfunction}%
 %
 \ifthenelse{\equal{\ALG@noend}{t}}%
-   {%
-   \algtext*{EndWhile}%
-   \algtext*{EndFor}%
-   \algtext*{EndLoop}%
-   \algtext*{EndIf}%
-   \algtext*{EndProcedure}%
-   \algtext*{EndFunction}%
-   }{}%
+{%
+\algtext*{EndWhile}%
+\algtext*{EndFor}%
+\algtext*{EndLoop}%
+\algtext*{EndIf}%
+\algtext*{EndProcedure}%
+\algtext*{EndFunction}%
+}{}%
 %
 %      ***      OTHER DECLARATIONS      ***
 %
@@ -83,10 +83,10 @@
 %
 %
 \ifthenelse{\boolean{ALG@compatible}}%
-   {%
-   \ifthenelse{\equal{\ALG@noend}{t}}%
-      {\RequirePackage[noend]{algcompatible}}%
-      {\RequirePackage{algcompatible}}%
-   }%
-   {}%
+{%
+\ifthenelse{\equal{\ALG@noend}{t}}%
+{\RequirePackage[noend]{algcompatible}}%
+{\RequirePackage{algcompatible}}%
+}%
+{}%
 %
