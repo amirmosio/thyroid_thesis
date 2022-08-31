@@ -2,7 +2,7 @@
 
 اسلاید‌هایی که متخصصان از آن برای تشخیص استفاده می‌کنند، ابعاد بزرگی در حد چند‌ده‌هزار پیکسل را دارند، به طوری که به هیچ‌وجه در
 حافظه پردازنده‌های رایج جای نمی‌گیرد.
-برای حل این مشکل در این پروژه سعی بر این شد که اسلاید‌ها به تیکه‌های کوچک تر
+برای حل این مشکل در این پروژه سعی بر این شد که اسلاید‌ها به بریده‌های کوچک‌تر
 $512\times512$
  عکس شکسته شوند به طوری که قابل پردازش باشند.
  برای پوشش سلول‌هایی که در ناحیه‌های مرزی عکس و به صورت ناقص قرار می‌گیرند، ناحیه‌‌ها همپوشانی $10$ درصد را با یکدیگر دارند.
@@ -29,16 +29,16 @@ $512\times512$
 برای بدست آوردن مقدار بهینه آستانه و همچنین آزمودن این روش، به ترتیب زیر عمل شده است.
 \begin{enumerate}
     \item ابتدا حدس اولیه 500 برای آستانه انتخاب شد و اسلاید‌ها با توجه به این آستانه به قطعه‌های کوچک عکس در آمدند.
-    مقدا اولیه آستانه در این مرحله، نیاز به دقت بالایی ندارد، زیرا همانطور که در قسمت بعد نیز توضیح داده خواهد شد، از آن برای انتخاب اسلاید‌ها استفاده می‌کنیم.
+    مقدار اولیه آستانه در این مرحله، نیاز به دقت بالایی ندارد، زیرا همانطور که در قسمت بعد نیز توضیح داده خواهد شد، از آن برای انتخاب اسلاید‌ها استفاده می‌کنیم.
     این حدس اولیه نیز با مشاهده مقادیر به صورت عملی و از روی نواحی چند اسلاید انتخاب شد.
     توزیع تعداد و درصد قطعه عکس‌های مجموع اسلایدها در تصویر ~\ref{fig:patch_distribution_with_initial_and_final_threshold} آمده است.
     \begin{figure}
         \begin{center}
-            \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/patch_distribution_old_500_threshold.jpeg}
-            \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/patch_percent_distribution_old_threshold_500.jpeg}
+            \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/patch_distribution_old_500_threshold_new_new.jpeg}
+            \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/patch_percent_distribution_old_threshold_500_new_new.jpeg}
             \hspace{.2cm}
-            \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/patch_distribution_new_298_threshold.jpeg}
-            \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/patch_percent_distribution_new_threshold_298.jpeg}
+            \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/patch_distribution_new_298_threshold_new_new.jpeg}
+            \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/patch_percent_distribution_new_threshold_298_new_new.jpeg}
         \end{center}
     	
         \caption[نمودارهای توزیع تعداد قطعه عکس‌های تولید شده و درصد قطعه عکس‌های تولید‌شده نسبت به تعداد کل]{
@@ -47,10 +47,11 @@ $512\times512$
     \end{figure}
     \item سپس سه اسلاید از پایین بازه و سه اسلاید از بالای بازه مشخص‌شده در نمودار توزیع قطعه عکس‌ها انتخاب شدند.
     سه اسلاید بالای بازه اسلاید‌هایی هستند که روش به‌کار رفته تعداد زیادی قطعه عکس از آن‌ها تولید کرده است و سه اسلاید پایین بازه اسلاید‌هایی هستند که به دلیل نابهینه بودن آستانه، قطعه عکس‌های کمی را برای آن‌ها تولید کرده است.
-    \item برای شش اسلاید انتخاب شده، به صورت دستی و با استفاده از نرم افزار \cite{gimp}\lr{GIMP} ماسک‌هایی تولید شد.
+    \item برای شش اسلاید انتخاب شده، با استفاده از نرم افزار \cite{gimp}\lr{GIMP} ماسک‌هایی تولید شد.
+    در این مرحله، بعد از بارگذاری اسلاید‌ها در نرم افزار، با استفاده از ابزارهای فراهم شده در آن و به صورت دستی، نواحی مورد نظر انتخاب شدند و در آخر در قالب تصویری جدا ذخیره شدند.
     \item در قدم بعد، باید معیار‌هایی را برای روش به‌کار رفته انتخاب کرد تا با استفاده از آن‌ها بتوان آستانه بهینه را پیدا کرد و در نهایت آن را ارزیابی کرد.
     همانطور که در قسمت‌های قبل گفته شد، فیلتر ناحیه‌های فاقد اطلاعات، اهمیت زیادی برای ما دارد از این رو، در ارزیابی این روش علاوه بر دقت\LTRfootnote{Accuracy}، صحت\LTRfootnote{Precision} نیز عامل مهمی در کارکرد درست است.
-    صحت، با توجه به فرمول \ref{eqn:precision_and_description} هرچه به مقدار عددی 1 نزدیک تر باشد به این معناست که ناحیه‌های بدست آمده از این روش، به احتمال بالاتری دارای اطلاعات هستند و در نتیجه ناحیه‌های فاقد اطلاعات کمتری تولید می‌شوند.
+    صحت، با توجه به رابطه \ref{eqn:precision_and_description} هرچه به مقدار عددی 1 نزدیک تر باشد به این معناست که ناحیه‌های بدست آمده از این روش، به احتمال بالاتری دارای اطلاعات هستند و در نتیجه ناحیه‌های فاقد اطلاعات کمتری تولید می‌شوند.
 	\begin{equation}
 		\label{eqn:precision_and_description}
 		\begin{split}
@@ -72,7 +73,7 @@ $512\times512$
     \item حال با توجه به این دو معیار، قطعه کدی نوشته شد که شش اسلاید و ماسک‌های مربوط به آن‌ها را به عنوان ورودی می‌گیرد و با شروع از آستانه 500 و محاسبه ماتریس درهم ریختگی\LTRfootnote{Confusion Matrix}، در جهتی آستانه را تغییر می‌دهد تا دو معیار گفته‌شده بیشینه شوند.
     لازم به ذکر است، در نهایت از تابع هدف\LTRfootnote{Objective Function}
      $0.25\times\text{Precision}+0.75\times\text{Accuracy}$
-      برای یافتن آستانه استفاده شد تا صحت مقدار پایینی به خود نگیرد.
+      برای یافتن آستانه استفاده شد، که در آن ضرایب طوری انتخاب شدند که اولا"، مجموع آن‌ها یک شود و دوما"، باتوجه به اهمیت این دو معیار دقت و صحت، آن‌ها را بشیینه کند. 
     در هر دوره از اجرای کد، از هر اسلاید 2000 (با توجه به اینکه درصد زیادی از اسلاید‌ها را پس‌زمینه تشکیل می‌دهد، عدد بزرگی انتخاب شد تا آستانه در هر دور، در جهت درستی حرکت کند) و در مجموع
      $2000 \times 6$ 
      قطعه عکس مورد بررسی قرار می‌گیرد به صورتی که آستانه در جهت افزایش تابع هدف و با اندازه پرش\LTRfootnote{Jump Size} $120$ و نرخ نزولی\LTRfootnote{Decay Rate} $0.85$، کاهش و یا افزایش پیدا می‌کند.
@@ -88,55 +89,57 @@ $512\times512$
     \end{figure}
     اسلاید‌ها و ماسک‌های به‌کار رفته آن‌ها در تصویر~\ref{fig:threshold_train_slides_and_menuall_masks} ارائه شده است و دقت و حساسیت روش بر روی این شش اسلاید نیز در جدول~\ref{table:laplacian_acc_details} آمده است.
     \begin{table}[t]
+    	\caption[دقت روش لاپلاسین برای تشخیص نواحی پس زمینه از غیر پس زمینه]
+    	{
+    		ستون اول این جدول، شماره اسلاید را مشخص می‌کند.
+    		در ستون دوم ماتریس درهم ریختگی روش لاپلاسین بر روی اسلاید آن آمده است.
+    		ستون و چهارم به ترتیب دقت و صحت روش ذکر شده برای فیلتر کردن نواحی فاقد اطلاعات را نشان می‌دهد.
+    	}
         \centering
-        \begin{latin}
-            \begin{tabular}{|c|c|c|c|c|}
-                \hline
-                \rl{اسلاید} & \rl{{ماتریس درهم ریختگی}} & \rl{دقت} & \rl{صحت}
-                \\
-                \hline
-                \hline
-                \text{1} & \lr{TP: $4624$  FP: $126$ TN: $14100$ FN: $226$} & $0.98$ & $0.97$\\
-                \text{2} & \lr{TP: $1103$  FP: $172$ TN: $3758$  FN: $7$} & $0.96$ & $0.86$\\
-                \text{3} & \lr{TP: $7615$  FP: $92$  TN: $20871$ FN: $234$} & $0.98$ & $0.98$\\
-                \text{4} & \lr{TP: $78$    FP: $18$  TN: $1880$  FN: $4$} & $0.98$ & $0.81$\\
-                \text{5} & \lr{TP: $1138$  FP: $4$   TN: $6671$  FN: $492$} & $0.94$ & $0.99$\\
-                \text{6} & \lr{TP: $460$   FP: $0$   TN: $19618$ FN: $1426$} & $0.93$ & $0.99$\\
-                \hline
-                \text{In Total} & \text{TP: $15018$ FP: $412$ TN: $66898$ FN: $2389$} & $0.96$ & $0.97$\\
-                \hline
-            \end{tabular}
-        \end{latin}
-        \caption[دقت روش لاپلاسین برای تشخیص نواحی پس زمینه از غیر پس زمینه]
-        {
-        ستون اول این جدول، شماره اسلاید را مشخص می‌کند.
-        در ستون دوم ماتریس درهم ریختگی روش لاپلاسین بر روی اسلاید آن آمده است.
-        ستون و چهارم به ترتیب دقت و صحت روش ذکر شده برای فیلتر کردن نواحی فاقد اطلاعات را نشان می‌دهد.
-    }
+        \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            \rl{اسلاید} & \rl{{ماتریس درهم ریختگی}} & \rl{دقت} & \rl{صحت}
+            \\
+            \hline
+            \hline
+            \text{1} & \lr{TP: $4624$  FP: $126$ TN: $14100$ FN: $226$} & $0.98$ & $0.97$\\
+            \text{2} & \lr{TP: $1103$  FP: $172$ TN: $3758$  FN: $7$} & $0.96$ & $0.86$\\
+            \text{3} & \lr{TP: $7615$  FP: $92$  TN: $20871$ FN: $234$} & $0.98$ & $0.98$\\
+            \text{4} & \lr{TP: $78$    FP: $18$  TN: $1880$  FN: $4$} & $0.98$ & $0.81$\\
+            \text{5} & \lr{TP: $1138$  FP: $4$   TN: $6671$  FN: $492$} & $0.94$ & $0.99$\\
+            \text{6} & \lr{TP: $460$   FP: $0$   TN: $19618$ FN: $1426$} & $0.93$ & $0.99$\\
+            \hline
+            \rl{روی هم} & \lr{TP: $15018$ FP: $412$ TN: $66898$ FN: $2389$} & $0.96$ & $0.97$\\
+            \hline
+        \end{tabular}
         \label{table:laplacian_acc_details}
     \end{table}
 
     \begin{figure}
         \begin{center}
+        	\vspace{0.05cm}
+		    \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/evaluate_slides/TCGA-EL-A3TB-11A-01-TS1.6E0966C9-1552-4B30-9008-8ACF737CA8C3__2000_generated_mask.jpg}
+		    \vspace{0.05cm}
+        	\includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/evaluate_slides/TCGA-EL-A3TB-11A-01-TS1.6E0966C9-1552-4B30-9008-8ACF737CA8C3__2000_masked.png}
+        	\vspace{0.05cm}
             \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/evaluate_slides/TCGA-DJ-A1QG-01A-01-TSA.04c62c21-dd45-49ea-a74f-53822defe097__2000_generated_mask.jpg}
             \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/evaluate_slides/TCGA-DJ-A1QG-01A-01-TSA.04c62c21-dd45-49ea-a74f-53822defe097__2000_masked.png}
-            \hspace{.2cm}
-            \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/evaluate_slides/TCGA-EL-A3TB-11A-01-TS1.6E0966C9-1552-4B30-9008-8ACF737CA8C3__2000_generated_mask.jpg}
-            \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/evaluate_slides/TCGA-EL-A3TB-11A-01-TS1.6E0966C9-1552-4B30-9008-8ACF737CA8C3__2000_masked.png}
-            \hspace{.2cm}
+            \vspace{0.05cm}
             \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/evaluate_slides/TCGA-ET-A39O-01A-01-TSA.3829C900-7597-4EA9-AFC7-AA238221CE69_7000_generated_mask.jpg}
             \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/evaluate_slides/TCGA-ET-A39O-01A-01-TSA.3829C900-7597-4EA9-AFC7-AA238221CE69_7000_masked.png}
-            \hspace{.2cm}
+            \vspace{0.05cm}
             \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/evaluate_slides/TCGA-EL-A4K7-11A-01-TS1.C08B59AA-87DF-4ABB-8B70-25FEF9893C7F__70_generated_mask.jpg}
             \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/evaluate_slides/TCGA-EL-A4K7-11A-01-TS1.C08B59AA-87DF-4ABB-8B70-25FEF9893C7F__70_masked.png}
-            \hspace{.2cm}
+            \vspace{0.05cm}
             \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/evaluate_slides/TCGA-ET-A39N-01A-01-TSA.C38FCE19-9558-4035-9F0B-AD05B9BE321D___198_generated_mask.jpg}
             \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/evaluate_slides/TCGA-ET-A39N-01A-01-TSA.C38FCE19-9558-4035-9F0B-AD05B9BE321D___198_masked.png}
-            \hspace{.2cm}
+            \vspace{0.05cm}
             \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/evaluate_slides/TCGA-BJ-A3F0-01A-01-TSA.728CE583-95BE-462B-AFDF-FC0B228DF3DE__3_generated_mask.jpg}
             \includegraphics[width=0.48\linewidth]{figs/introduction/subs/challenges/evaluate_slides/TCGA-BJ-A3F0-01A-01-TSA.728CE583-95BE-462B-AFDF-FC0B228DF3DE__3_masked.png}
         \end{center}
-        \caption[نواحی استخراج شده و ماسک‌های مرتبط]{ناحیه‌های استخراج‌شده شش اسلاید $1$, $2$, $3$, $4$, $5$, $6$ در آستانه 298 و ماسک‌های مرتبط با آن‌ها}
+        \caption[نواحی استخراج شده و ماسک‌های مرتبط]
+        {در این تصویر، سطر یکم تا ششم به ترتیب، در سمت راست، نواحی استخراج‌شده شش اسلاید $1$, $2$, $3$, $4$, $5$, $6$ توسط روش پیشنهادی در آستانه $298$ و در سمت چپ، ماسک‌های مرتبط با آن‌ها را که به صورت دستی تهیه شده‌اند، نشان می‌دهد.}
+
         \label{fig:threshold_train_slides_and_menuall_masks}
     \end{figure}
 \end{enumerate}
@@ -150,5 +153,15 @@ $512\times512$
     این نواحی نیز علاوه بر نواحی پس زمینه اطلاعات مورد نیاز ما را ندارند و یا از دست داده‌اند و حالت بلوری به خود گرفته‌اند.
     با توجه به ماهیت روش استخراج ذکر شده، این مشکل در این فرآیند حل می‌شود.
     لاپلاسین یک تصویر حاوی اطلاعاتی نظیر گوشه‌ها و خطوط است از این روی، یکی از روش‌های اصلی تشخیص بلوری بودن تصویر است، زیرا در این تصاویر اطلاعاتی مانند خطوط اندکی محو می‌شوند.
-    با توجه به اینکه مبنای اصلی روش استخراج ذکر‌شده نیز لاپلاسین تصویر است، در طی این فرآیند تصاویر بلوری مقدار واریانس لاپلاسین کمتری گرفته و خود به خود حذف می‌گردند.
+    با توجه به اینکه مبنای اصلی روش استخراج ذکر‌شده نیز لاپلاسین تصویر است، در طی این فرآیند تصاویر بلوری مقدار واریانس لاپلاسین کمتری گرفته و خود به خود حذف می‌گردند. مثالی از این پدیده در تصویر \ref{fig:defocused_sharp_sample_image} آمده است.
+    \begin{figure}
+    	\begin{center}
+    		\includegraphics[width=0.48\linewidth]{figs/suggested_methods/subs/patcher/defocused.png}
+    		\includegraphics[width=0.48\linewidth]{figs/suggested_methods/subs/patcher/sharp.png}
+    	\end{center}
+    	\caption[نمونه‌ای از فیلتر تصاویر تار توسط روش گاوسین]
+    	{دو تصویر از اسلایدی از مجموع‌داده اطلس ژنوم تیروئیدcite{clark2013cancer} تهیه شده‌‌اند که در آن تصویر سمت راست به دلایلی مقداری تار شده است و توسط روش پیشنهادی فیلتر می‌شود و تصویر سمت چپ آن تصویری سالم است که از نواحی کناری تصویر دیگر بریده شده است.}
+    	\label{fig:defocused_sharp_sample_image}
+    \end{figure}
+    
 \end{itemize}
